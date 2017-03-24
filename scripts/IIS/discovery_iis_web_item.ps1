@@ -1,4 +1,4 @@
-###########################################################
+﻿###########################################################
 ###########################################################
 ####                                                   ####
 ####             Скрипт для автоматического            ####
@@ -24,7 +24,9 @@ switch ($WebItem)
     {
         "Websites" {
                 Get-Website | ForEach-Object {
-                        $JSON_Response = $JSON_Response + "{ `"{`#SITENAME}`":`"" + $_.name + "`"},"
+                        if ($first -ne 0 ) { $JSON_Response = $JSON_Response + ", `r`n" }
+                        $JSON_Response = $JSON_Response + "`t`t{ `"{`#SITENAME}`":`"" + $_.name + "`" }"
+                        $first++
                     }
             }
         "Pools"    {
