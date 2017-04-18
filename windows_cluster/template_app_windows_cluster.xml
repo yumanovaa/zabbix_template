@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.2</version>
+    <date>2017-04-18T14:03:00Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template App Windows Cluster</template>
+            <name>Template App Windows Cluster</name>
+            <description>Мониторинг кластера Windows</description>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Windows Cluster</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Primary node Windows Cluster</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>WindowsCluster[{HOST.HOST1},primary_SQL_AG_node]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Windows Cluster</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Node Cluster</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>WindowsCluster.discovery</key>
+                    <delay>3600</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
+                    <lifetime>30</lifetime>
+                    <description>Обнаружение всех нод кластера</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Network cluster interface on {#NODENAME}</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>WindowsCluster[{#NODENAME},network_node_state]</key>
+                            <delay>30</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Unknown (-1)&#13;
+Windows Server 2012, Windows Server 2008 R2, and Windows Server 2008:  &#13;
+This value is StateUnknown before Windows Server 2012 R2 .&#13;
+Unavailable (0)&#13;
+Failed (1)&#13;
+Unreachable (2)&#13;
+Up (3)</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Windows Cluster</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>Windows network cluster interface state</name>
+                            </valuemap>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Template App Windows Cluster:WindowsCluster[{#NODENAME},network_node_state].last()}&lt;&gt;3</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Cluster network interface problem on node {#NODENAME}</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description>Проблема с доступностью сетевого интерфейса Windows Cluster у одной из нод</description>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes/>
+                    <host_prototypes/>
+                </discovery_rule>
+            </discovery_rules>
+            <httptests/>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <value_maps>
+        <value_map>
+            <name>Windows network cluster interface state</name>
+            <mappings>
+                <mapping>
+                    <value>-1</value>
+                    <newvalue>Unknown</newvalue>
+                </mapping>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Unavailable</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Failed</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Unreachable</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>Up</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
